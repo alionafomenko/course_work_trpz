@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search result</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+
+<div class="header">
+    <div class="title"><a href="/">Crawler</a></div>
+    <div class="search-container">
+        <form onsubmit="submitForm(event)">
+            <input type="text" id="searchInput" placeholder="Search content" th:value="${searchPhrase}">
+            <button type="submit" class="search-button">
+                <img src="/search.png" alt="Search" />
+            </button>
+        </form>
+
+        <script>
+            function submitForm(event) {
+                event.preventDefault(); // предотвращает перезагрузку страницы
+                const searchPhrase = document.getElementById("searchInput").value;
+                if (searchPhrase) {
+                    window.location.href = `/search/${encodeURIComponent(searchPhrase)}`;
+                }
+            }
+        </script>
+    </div>
+</div>
+<div class="search-result">
+    <div class="result-card" th:each=" contentLink : ${contentLinks}">
+<div class="div-img">
+    <img th:src="${contentLink.siteUrl} + '/favicon.ico'" alt="Site Icon" class="site-icon">
+
+</div>
+
+        <div class="result-content">
+            <div class="site-infoo">
+                <a th:href="${contentLink.siteUrl}" target="_blank"  th:text="${contentLink.siteTitle}"></a><span th:text="${contentLink.siteUrl}" ></span>
+            </div>
+
+            <div class="document-title">
+                <a th:href="${contentLink.docUrl}" target="_blank" th:text="${contentLink.docTitle}"></a>
+            </div>
+
+            <div class="content">
+                <p th:utext="${contentLink.content}" ></p>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

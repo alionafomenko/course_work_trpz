@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+
+<div class="header">
+    <div class="title"><a href="/">Crawler</a></div>
+    <div class="search-container">
+        <form onsubmit="submitForm(event)">
+            <input type="text" id="searchInput" placeholder="Search content">
+            <button type="submit" class="search-button">
+                <img src="/search.png" alt="Search" />
+            </button>
+        </form>
+
+        <script>
+            function submitForm(event) {
+                event.preventDefault(); // предотвращает перезагрузку страницы
+                const searchPhrase = document.getElementById("searchInput").value;
+                if (searchPhrase) {
+                    window.location.href = `/search/${encodeURIComponent(searchPhrase)}`;
+                }
+            }
+        </script>
+    </div>
+</div>
+
+<div class="div-gallery">
+    <div class="gallery-container">
+        <div class="gallery-item" th:each="pic : ${pictures}">
+            <img th:src="@{${pic.url}}" alt="Image">
+            <input type="hidden" id="pic_list" th:value="${next_page_is_empty}">
+        </div>
+    </div>
+</div>
+
+<div class="pagination">
+    <form th:action="@{/pictures/{siteId}/{pageNumber}(siteId=${siteId}, pageNumber = ${pageNumber} - 1)}">
+        <button type="submit" id="previous_page_button" onclick="previousPage()">&#9664;</button>
+    </form>
+    <span id="pageNumbers" th:text="${pageNumber}"></span>
+    <form th:action="@{/pictures/{siteId}/{pageNumber}(siteId=${siteId}, pageNumber=${pageNumber} + 1)}">
+        <button type="submit" id="next_page_button" onclick="nextPage()">&#9654;</button>
+    </form>
+
+</div>
+
+<script>
+    // Функция для получения текущей страницы и длины списка изображений
+
+
+    function previousPage() {
+        const currentPage = parseInt(document.getElementById('pageNumbers').innerText);
+        if (currentPage === 1) {
+            document.getElementById('previous_page_button').disabled = true;
+        }
+    }
+
+    function nextPage() {
+        const picListSize = document.getElementById('pic_list').value;
+        if (picListSize === 'true') {
+            document.getElementById('next_page_button').disabled = true;
+        }
+    }
+
+    // Вызываем функции для проверки состояния кнопок при загрузке страницы
+    document.addEventListener("DOMContentLoaded", function() {
+        previousPage();
+        nextPage();
+    });
+</script>
+
+</body>
+</html>

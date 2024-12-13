@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<div class="header">
+<div class="title">Site list to approve</div>
+</div>
+<div class="site-list" >
+    <div th:text="${emptyList}"></div>
+    <div class="site-item" th:each="site : ${sites}">
+        <img th:src="${site.url} + '/favicon.ico'" alt="icon">
+        <div class="site-info">
+            <h2><a th:href="${site.url}" th:text="${site.title}" target="_blank"></a></h2>
+            <div class="site-details">
+                <span th:text="'Last scan date: ' + ${site.lastScanDate} + ' | Pages: ' + ${site.documentCount} + ' | '"></span>
+                <a th:href="@{/pictures/{siteId}/{pageNumber}(siteId=${site.id}, pageNumber = 1)}" th:text="'Pictures: ' + ${site.pictureCount}"></a>
+            </div>
+        </div>
+        <div class="buttons">
+            <form action="/approve" method="post">
+                <button type="submit" class="approve-button">Approve</button>
+                <input type="hidden" name="siteId" th:value="${site.id}">
+            </form>
+            <form action="/reject" method="post">
+                <button type="submit" class="reject-button">Reject</button>
+                <input type="hidden" name="siteId" th:value="${site.id}">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

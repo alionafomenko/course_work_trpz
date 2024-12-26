@@ -1,0 +1,357 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    position: relative;
+}
+.header {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin: auto;
+    flex-direction: column;
+
+}
+
+.header a{
+    text-decoration: none;
+    color: #007bff;
+}
+
+.header .title {
+    font-size: 45px;
+    font-weight: bold;
+    color: #007bff;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container form{
+    display: flex;
+    align-items: center;
+}
+
+
+.search-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-top: 20px;
+    /* margin: 20px; */
+    width: 35px;
+    height: 30px; !important;
+}
+
+.search-button img {
+    width: 35px;
+    height: 35px;
+}
+
+.search-container input[type="text"] {
+    padding: 8px;
+    border-radius: 15px;
+    border: antiquewhite;
+    height: 20px;
+    max-width: 800px;
+    width: 720px;
+    margin-top: 20px;
+}
+.site-list {
+    padding-top: 30px;
+    max-width: 800px;
+    margin: auto;
+}
+/* Блок добавления сайта */
+.add-site {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+}
+.add-site span {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.site-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.site-item img {
+    width: 32px;
+    height: 32px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+.site-info {
+    flex-grow: 1;
+}
+.site-info h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #007bff;
+}
+.site-info h2 a {
+    text-decoration: none;
+    color: inherit;
+}
+.site-info h2 a:hover {
+    text-decoration: underline;
+}
+.site-description {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #333;
+}
+.site-details {
+    font-size: 13px;
+    color: #666;
+}
+
+
+/* Стиль для затемнения */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+/* Стиль для всплывающего окна */
+.popup {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.popup input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.popup button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.popup button:hover {
+    background-color: #0056b3;
+}
+
+.div-gallery{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.pagination button{
+    border: aliceblue;
+    background-color: #f4f4f4;
+}
+
+.search-container button{
+    color: white;
+    border: aliceblue;
+    background-color: #007bff;
+    border-radius: 8px;
+}
+
+.search-result {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pageNumbers span{
+    margin: 10px;
+    width: 10px;
+    height: 15px;
+}
+
+.current-page{
+    background-color: #dddddd;
+}
+
+
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 колонок */
+    gap: 10px; /* Расстояние между картинками */
+}
+.gallery-item {
+
+    position: relative;
+}
+.gallery-item img {
+    margin: 20px;
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+
+
+.result-card {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    min-width: 750px;
+    border-radius: 8px;
+    max-width: 750px;
+    font-family: Arial, sans-serif;
+    margin-bottom: 10px;
+}
+.site-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
+
+.buttons{
+    display: flex
+}
+
+.approve-button {
+    margin-right: 10px;
+    background-color: #4CAF50; /* Зелёный цвет */
+    color: white; /* Цвет текста */
+    width: 90px;
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Скругление углов */
+    padding: 10px; /* Отступы внутри кнопки */
+    font-size: 16px; /* Размер текста */
+    cursor: pointer; /* Курсор "указатель" при наведении */
+    transition: background-color 0.3s ease; /* Плавный переход цвета при наведении */
+}
+
+.reject-button {
+    background-color: #f44336; /* Зелёный цвет */
+    color: white; /* Цвет текста */
+    width: 90px;
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Скругление углов */
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    font-size: 16px; /* Размер текста */
+    cursor: pointer; /* Курсор "указатель" при наведении */
+    transition: background-color 0.3s ease; /* Плавный переход цвета при наведении */
+}
+
+.approve-button:hover {
+    background-color: #45a049; /* Цвет при наведении */
+}
+
+.approve-button:active {
+    background-color: #3e8e41; /* Цвет при нажатии */
+    transform: scale(0.95); /* Лёгкое уменьшение кнопки при клике */
+}
+
+
+.reject-button:hover {
+    background-color: #e53935; /* Цвет при наведении */
+}
+
+.reject-button:active {
+    background-color: #d32f2f; /* Цвет при нажатии */
+    transform: scale(0.95); /* Лёгкое уменьшение кнопки при клике */
+}
+
+p {
+    margin-block-start: 0.25em;
+    margin-block-end: 0.25em;
+}
+
+.result-content {
+    display: flex;
+    flex-direction: column;
+}
+.site-infoo {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    flex-direction: column;
+}
+.site-infoo a {
+    margin-bottom: 5px;
+    color: black;
+    text-decoration: none;
+}
+.document-title a {
+    font-size: 18px;
+    color: #1a0dab;
+    text-decoration: none;
+    font-weight: bold;
+}
+.document-title a:hover {
+    text-decoration: underline;
+}
+.content {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+}
+
+
+.p{
+    padding-bottom: 10px;
+    margin: auto;
+    display: flex;
+    font-size: 13px;
+    flex-direction: row;
+    justify-content: flex-start;
+    color: red;
+}
